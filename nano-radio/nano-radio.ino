@@ -200,9 +200,17 @@ void loop() {
   cur_mil = millis();
   if (cur_mil - tmp_mil > 500){
     tmp_mil = cur_mil;
-      
+
+    display.setCursor(0, 5);  
+    display.print("btn:");
+    display.print(cur_btn);
+    display.print(" ");
+    display.print("enc:");
+    display.print(cnt_enc);
+    display.print("   ");
+          
     RTC.readTime();
-      
+
     display.setCursor(0, 0);
     display.print(RTC.yyyy, DEC); 
     display.print("-");
@@ -252,14 +260,7 @@ void loop() {
       digitalWrite(LED, LOW);
       blnk = true;
     }
-  
-    display.setCursor(0, 5);  
-    display.print("btn:");
-    display.print(cur_btn);
-    display.print("  ");
-    display.print("enc:");
-    display.print(cnt_enc);
-    display.print("   ");
+
 
     switch (cur_cmd){
       case CMD_CHAN_DOWN:
